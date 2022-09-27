@@ -1,0 +1,67 @@
+@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<div class="column-layout master-view-container">
+    <IgbNavbar class="navbar" master-view-scope>
+        <div>Chart Customization Webinar</div>
+    </IgbNavbar>
+    <div class="row-layout group">
+        <IgbNavDrawer Position="NavDrawerPosition.Relative" class="nav-drawer" master-view-scope>
+            <div slot="mini">
+                <IgbNavDrawerItem @onclick="@(e => Navigate(""))">
+                    <span slot="icon">
+                        <span class="material-icons icon">
+                            account_circle
+                        </span>
+                        <IgbRipple></IgbRipple>
+                    </span>
+                </IgbNavDrawerItem>
+                <IgbNavDrawerItem @onclick="@(e => Navigate("aggregate-chart"))">
+                    <span slot="icon">
+                        <span class="material-icons icon">
+                            assessment
+                        </span>
+                        <IgbRipple></IgbRipple>
+                    </span>
+                </IgbNavDrawerItem>
+            </div>
+            <IgbNavDrawerItem>
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        account_circle
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">View 1</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem>
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        assignment_turned_in
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">View 2</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem>
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        assessment
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">View 3</div>
+            </IgbNavDrawerItem>
+        </IgbNavDrawer>
+        <div class="view-container">
+            @Body
+        </div>
+    </div>
+</div>
+
+@code {
+    private void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

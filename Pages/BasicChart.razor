@@ -1,0 +1,63 @@
+@page "/"
+@inject OrdersByCountryService ordersByCountryService
+
+<div class="column-layout basic-chart-container">
+    <p>
+        <h2>@header: @value</h2>
+    </p>
+
+    <IgbCategoryChart 
+        DataSource="ordersByCountryOrdersByCountryAggregate" id="@chart"
+        ChartType="CategoryChartType.Column" 
+        ChartTitle="Orders by Country" 
+        XAxisTitle="Country" 
+        YAxisTitle="Order Count" 
+        Brushes="#79D7F2"
+        Outlines="#79D7F2"                     
+        SeriesPointerDown="SeriesClicked"
+        FinalValueAnnotationsVisible="true"
+        InitialSorts="Orders asc"
+        YAxisLabelLocation="YAxisLabelLocation.OutsideRight"
+        CrosshairsDisplayMode="CrosshairsDisplayMode.Both"
+        CrosshairsSnapToData="true"
+        HighlightingMode="SeriesHighlightingMode.FadeOthersSpecific"
+        AutoMarginAndAngleUpdateMode="AutoMarginsAndAngleUpdateMode.SizeChanging"
+        ShouldConsiderAutoRotationForInitialLabels="true"
+        IsTransitionInEnabled="true"
+        ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" 
+        class="category-chart" basic-chart-scope>
+    </IgbCategoryChart>
+</div>
+
+@code {
+
+    private string? header = "";
+    private double? value = 0;
+    private IgbCategoryChart chart;
+
+    private OrdersByCountryAggregateType[] ordersByCountryOrdersByCountryAggregate = 
+        Array.Empty<OrdersByCountryAggregateType>();
+
+    private OrdersByCountryAggregateType[] placeHolder = 
+        Array.Empty<OrdersByCountryAggregateType>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        ordersByCountryOrdersByCountryAggregate = 
+            await this.ordersByCountryService.GetOrdersByCountryAggregate() 
+            ?? ordersByCountryOrdersByCountryAggregate;
+
+
+        var firstItem = ordersByCountryOrdersByCountryAggregate[0];
+        header = firstItem.Country;
+        value = firstItem.Orders;
+    }
+
+    private void SeriesClicked(IgbDomainChartSeriesPointerEventArgs args)
+    {
+        var obj = (OrdersByCountryAggregateType)args.Item;
+        header = obj.Country;
+        value = obj.Orders;
+    }
+}

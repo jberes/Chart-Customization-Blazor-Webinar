@@ -1,0 +1,16 @@
+.row-layout {
+    display: flex;
+}
+.aggregate-chart-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.category-chart {
+    margin: 32px;
+    min-width: 400px;
+    min-height: 300px;
+    flex-grow: 1;
+    flex-basis: 0;
+}

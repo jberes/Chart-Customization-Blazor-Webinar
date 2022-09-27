@@ -1,0 +1,37 @@
+@page "/aggregate-chart"
+@inject SalesByProductService salesByProductService
+
+<div class="row-layout aggregate-chart-container">
+    <IgbCategoryChart 
+        DataSource="salesByProductSalesByProductFlat" 
+        ChartTitle="Sales by Product" 
+        XAxisTitle="Product Name" 
+        YAxisTitle="Sales"
+        IncludedProperties=@(new string[] { "CategoryName", "ProductSales" })
+        InitialGroups="CategoryName"
+        InitialSummaries="sum(ProductSales) as ProductSales"
+        GroupSorts="ProductSales asc"
+        AutoMarginAndAngleUpdateMode="AutoMarginsAndAngleUpdateMode.SizeChanging"
+        ShouldConsiderAutoRotationForInitialLabels="true"
+        IsTransitionInEnabled="true"
+        HighlightingMode="SeriesHighlightingMode.BrightenSpecific"
+        CrosshairsAnnotationEnabled="true"
+        CrosshairsDisplayMode="CrosshairsDisplayMode.Both"
+        FinalValueAnnotationsVisible=true
+        CrosshairsSnapToData=true
+        ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" 
+        class="category-chart" aggregate-chart-scope>
+    </IgbCategoryChart>
+</div>
+
+@code {
+    private SalesByProductFlatType[] salesByProductSalesByProductFlat = 
+        Array.Empty<SalesByProductFlatType>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        salesByProductSalesByProductFlat = 
+            await this.salesByProductService.GetSalesByProductFlat() 
+            ?? salesByProductSalesByProductFlat;
+    }
+}

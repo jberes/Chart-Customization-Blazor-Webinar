@@ -1,0 +1,21 @@
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.basic-chart-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.category-chart {
+    --brushes: #56b4e9 #009e73 #f0e442 #d55e00 #d600fe #00499f #e69f00 #000000 #84f0df #735656;
+    --outlines: #56b4e9 #009e73 #f0e442 #d55e00 #d600fe #00499f #e69f00 #000000 #84f0df #735656;
+    --marker-brushes: #56b4e9 #009e73 #f0e442 #d55e00 #d600fe #00499f #e69f00 #000000 #84f0df #735656;
+    --marker-outlines: #56b4e9 #009e73 #f0e442 #d55e00 #d600fe #00499f #e69f00 #000000 #84f0df #735656;
+    margin: 32px;
+    min-width: 400px;
+    min-height: 300px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
