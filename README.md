@@ -13,7 +13,7 @@ The BasicChart sample uses these property settings on the IgbCategoryChart
 ```html
 <div class="column-layout group">
     <IgbCategoryChart 
-		    DataSource="ordersByCountryOrdersByCountryAggregate" 
+	DataSource="ordersByCountryOrdersByCountryAggregate" 
         ChartType="CategoryChartType.Line"
         Brushes="#79D7F2"
         MarkerAutomaticBehavior="MarkerAutomaticBehavior.Square"
