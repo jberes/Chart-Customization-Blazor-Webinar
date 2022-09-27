@@ -1,5 +1,7 @@
 # Chart Customization Blazor Webinar
+
 updated Sept 27th, 2022
+
 Data sources use in this sample:
 
 * https://excel2json.io/api/share/2d14c082-f49d-4e33-6a1c-08da3961564a - Pre-aggregated list of Country / Orders from Northwind database
