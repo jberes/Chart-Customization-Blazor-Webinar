@@ -1,6 +1,6 @@
 # Chart Customization Blazor Webinar
 
-updated Sept 27th, 2022
+Updated Sept 27th, 2022
 
 Data sources use in this sample:
 
