@@ -1,6 +1,10 @@
 # Chart Customization Blazor Webinar
 
-Updated Sept 27th, 2022
+Updated Sept 29th, 2022
+
+Watch the Webinar on how to create charts, customize charts, etc.!
+
+https://www.youtube.com/watch?v=OSEpmpHlC9c
 
 Data sources use in this sample:
 
